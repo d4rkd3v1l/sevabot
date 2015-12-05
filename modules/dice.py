@@ -6,9 +6,9 @@ A dice roll module
 """
 import sys
 import random
+import os
 
 progname = 'dice'
-
 
 def to_int(s):
     """Convert string to integer safely."""
@@ -41,7 +41,7 @@ def main(args):
 
     if len(args) <= 0:
         # Roll a six-sided dice
-        print random.randint(1, 6)
+        print '{} rolled {}'.format(os.environ["SKYPE_FULLNAME"], random.randint(1, 6))
         return
 
     cmd = args[0]
@@ -66,7 +66,7 @@ def main(args):
             min_val = to_float(args[1])
             max_val = to_float(args[2])
 
-        print '{:.4f}'.format(random.uniform(min_val, max_val))
+        print '{} rolled {:.4f}'.format(os.environ["SKYPE_FULLNAME"], random.uniform(min_val, max_val))
 
         return
     elif cmd == 'gauss':
@@ -82,7 +82,7 @@ def main(args):
             mu = to_float(args[1])
             sigma = to_float(args[2])
 
-        print '{:.4f}'.format(random.gauss(mu, sigma))
+        print '{} rolled {:.4f}'.format(os.environ["SKYPE_FULLNAME"], random.gauss(mu, sigma))
 
         return
     else:
@@ -94,7 +94,7 @@ def main(args):
                 print 'The number of sides must be greater than 0.'
                 sys.exit(1)
 
-            print random.randint(1, sides)
+            print '{} rolled {}'.format(os.environ["SKYPE_FULLNAME"], random.randint(1, sides))
             return
         else:
 
@@ -106,7 +106,7 @@ def main(args):
                 min_val = max_val
                 max_val = temp_val
 
-            print random.randint(min_val, max_val)
+            print '{} rolled {}'.format(os.environ["SKYPE_FULLNAME"], random.randint(min_val, max_val))
             return
 
 
