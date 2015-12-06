@@ -9,6 +9,7 @@ import random
 import os
 
 progname = 'dice'
+output = '{} rolled a'.format(os.environ["SKYPE_FULLNAME"])
 
 def to_int(s):
     """Convert string to integer safely."""
@@ -41,7 +42,7 @@ def main(args):
 
     if len(args) <= 0:
         # Roll a six-sided dice
-        print '{} rolled {}'.format(os.environ["SKYPE_FULLNAME"], random.randint(1, 6))
+        print '{} {}'.format(output, random.randint(1, 6))
         return
 
     cmd = args[0]
@@ -66,7 +67,7 @@ def main(args):
             min_val = to_float(args[1])
             max_val = to_float(args[2])
 
-        print '{} rolled {:.4f}'.format(os.environ["SKYPE_FULLNAME"], random.uniform(min_val, max_val))
+        print '{} {:.4f}'.format(output, random.uniform(min_val, max_val))
 
         return
     elif cmd == 'gauss':
@@ -82,7 +83,7 @@ def main(args):
             mu = to_float(args[1])
             sigma = to_float(args[2])
 
-        print '{} rolled {:.4f}'.format(os.environ["SKYPE_FULLNAME"], random.gauss(mu, sigma))
+        print '{} {:.4f}'.format(output, random.gauss(mu, sigma))
 
         return
     else:
@@ -94,7 +95,7 @@ def main(args):
                 print 'The number of sides must be greater than 0.'
                 sys.exit(1)
 
-            print '{} rolled {}'.format(os.environ["SKYPE_FULLNAME"], random.randint(1, sides))
+            print '{} {}'.format(output, random.randint(1, sides))
             return
         else:
 
@@ -106,7 +107,7 @@ def main(args):
                 min_val = max_val
                 max_val = temp_val
 
-            print '{} rolled {}'.format(os.environ["SKYPE_FULLNAME"], random.randint(min_val, max_val))
+            print '{} {}'.format(output, random.randint(min_val, max_val))
             return
 
 
